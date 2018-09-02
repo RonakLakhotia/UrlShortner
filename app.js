@@ -20,10 +20,8 @@ if (typeof req.body.url === 'undefined') {
 	    return;
 	}
 	let url = req.body.url;
-	res.status(200);
+	res.send(req.body);
 });
-
-
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log('Listening on port ' + port));
