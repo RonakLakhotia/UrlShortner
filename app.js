@@ -20,6 +20,15 @@ res.send(urlToShorten)
 
 app.get('/urlToForward', (req, res) => {
 	console.log(req.query);
+	var Url = req.query.url;
+	shortUrl.findOne({'shorterUrl': Url}, (error, data) => {
+		if (error) {
+			return res.send('Error reading database');
+		} else {
+			var re = new new RegExp("^(http||https)://", "i");
+		}
+	})
+
 })
 
 app.post('/newUrl', (req, res) => {
