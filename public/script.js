@@ -1,5 +1,4 @@
-// const button = document.getElementById("short");
-// console.log(button);
+
 
 $('.btn-shorten').on('click', function(){
 
@@ -14,11 +13,14 @@ $('.btn-shorten').on('click', function(){
 	    if (data.shorterUrl != 'Incorrect url expression' && data.shorterUrl != 'Failed to store in Database') {
 		    var resultHTML = '<a class="result" href="' + data.shorterUrl + '">'
 		        + data.shorterUrl + '</a>';
+		    $('#link').html(resultHTML);
+	        $('#link').hide().fadeIn('slow');    
 	    } else {
 	    	var resultHTML = '<h2>' + data.shorterUrl + '</h2>';
+	    	$('#error').html(resultHTML);
+	        $('#error').hide().fadeIn('slow');
 	    }
-    	$('#link').html(resultHTML);
-	    $('#link').hide().fadeIn('slow');
+
     },
     error: function(jqXHR, textStatus, err) {
     	alert('text status '+textStatus+', err '+err)
