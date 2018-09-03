@@ -18,8 +18,11 @@ var urlToShorten = req.params.url;
 res.send(urlToShorten)
 });
 
+app.get('/urlToForward', (req, res) => {
+	console.log(req.query);
+})
+
 app.post('/newUrl', (req, res) => {
-console.log(req.body);
 if (typeof req.body.url === 'undefined') {
 	    res.status(400).json({ error: 'missing parameter', data: null }); // Only an  example
 	    return;
