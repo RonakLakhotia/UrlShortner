@@ -32,7 +32,7 @@ if (typeof req.body.url === 'undefined') {
 		typeOfError = 'Incorrect url expression';
 	} else {
 		//create the short url
-		var short = Math.floor(Math.random() * 100000).toString();
+		var short = "short/" + Math.floor(Math.random() * 10000).toString();
 
 		var data = new shortUrl(
 		{
