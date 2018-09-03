@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
 const shortUrl = require('./models/shortUrl');
+var typeOfError = '';
+var isError = false;
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shortUrls')
 app.use(bodyParser.json());
@@ -26,9 +28,33 @@ if (typeof req.body.url === 'undefined') {
 	//regex
 	var regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 	if (regex.test(url) === false) {
-		req.body.url = 'Failed';
+		isError = true;
+		typeOfError = 'Incorrect url expression';
+	} else {
+		//create the short url
+		var short = Math.floor(Math.random() * 100000).toString();
+
+		var data = new shortUrl(
+		{
+			originalUrl: url,
+			shorterUrl: short
+		});
+
+		data.save(err => {
+			if (err) {
+				typeOfError = 'Failed to store in Database';
+				isError = true;
+			}
+		})
 	}
-	res.send(req.body);
+	if (isError) {
+		var data = new shortUrl(
+		{
+			originalUrl: url,
+			shorterUrl: typeOfError
+		});
+	}
+	res.send(data);
 });
 
 const port = process.env.PORT || 3000;
