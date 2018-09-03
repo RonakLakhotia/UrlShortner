@@ -57,5 +57,8 @@ if (typeof req.body.url === 'undefined') {
 	res.send(data);
 });
 
+//Query original database
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log('Listening on port ' + port));
