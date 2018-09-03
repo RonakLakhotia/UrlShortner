@@ -11,7 +11,7 @@ $('.btn-shorten').on('click', function(){
 	    
 	    console.log(data);
 	    if (data.shorterUrl != 'Incorrect url expression' && data.shorterUrl != 'Failed to store in Database') {
-		    var resultHTML = '<a class="result" href="' + data.shorterUrl + '">'
+		    var resultHTML = '<a class="result" href="' + data.shorterUrl + '" + target="_blank">'
 		        + data.shorterUrl + '</a>';
 		    $('#link').html(resultHTML);
 	        $('#link').hide().fadeIn('slow');    
@@ -27,3 +27,5 @@ $('.btn-shorten').on('click', function(){
     }
 });
 });
+
+
