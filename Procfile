@@ -1,1 +1,1 @@
-web: target/start run --http.port=$PORT $PLAY_OPTS
+web: target/universal/stage/bin/{url_shortner} -Dhttp.port=$PORT
