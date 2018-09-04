@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const shortUrl = require('./models/shorturl');
 var typeOfError = '';
 var isError = false;
+const port = process.env.PORT || 3000;
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shortUrls')
 app.use(bodyParser.json());
@@ -27,7 +28,7 @@ app.get('/:url(*)', (req, res) => {
 				res.redirect("https://" + doc.originalUrl);
 			}
 		} else {
-			res.redirect('http://localhost:3000/');
+			res.redirect('http://localhost:/' + port);
 		}
 	});
 });
@@ -77,5 +78,4 @@ res.send(data);
 })
 }); 
 
-const port = process.env.PORT || 3000;
 app.listen(port, () => console.log('Listening on port ' + port));
