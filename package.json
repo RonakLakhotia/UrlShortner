@@ -21,12 +21,13 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
+    "mongodb": "*",
     "mongoose": "^5.2.12"
   },
   "engines": {
     "node": "8.9.1"
   },
-    "keywords": [
+  "keywords": [
     "node",
     "heroku",
     "express"
