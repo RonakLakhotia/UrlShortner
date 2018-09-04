@@ -1,6 +1,5 @@
 $('#link').click(function(e) {
 	    var text = $(e.target).text();
-	    console.log(text);
     	$.ajax({
 		url: '/urlToForward',
 		type: 'GET',

@@ -8,10 +8,10 @@ $('.btn-shorten').on('click', function(){
 		dataType: 'JSON',
 		data: {url: $('#short').val()},
 		success: function(data) {
-			
+
 			console.log(data);
 			if (data.shorterUrl != 'Incorrect url expression' && data.shorterUrl != 'Failed to store in Database') {
-				var resultHTML = '<a class="result" href="' + data.shorterUrl + '" + target="_blank">'
+				var resultHTML = '<a class="result" href="' + data.shorterUrl + '">'
 				+ data.shorterUrl + '</a>';
 				$('#link').html(resultHTML);
 				$('#link').hide().fadeIn('slow');    
