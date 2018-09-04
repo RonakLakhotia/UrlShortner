@@ -45,8 +45,10 @@ shortUrl.findOne({originalUrl: url}, function (err, doc) {
 		res.send({originalUrl: doc.originalUrl, shorterUrl: doc.shorterUrl});
 	} else {
 		var regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
-		if (regex.test(url) === false) {
+		var regexExp = new RegExp(regex);
+		if (!url.match(regexExp)) {
 			isError = true;
+
 			typeOfError = 'Incorrect url expression';
 		} else {
 //create the short url
