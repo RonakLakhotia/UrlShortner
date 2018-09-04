@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/{url_shortner} -Dhttp.port=$PORT
+web: nodemon app.js
